@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  
+  <title>Tests & Health Packages | Divya Health Care West Vinod Nagar, Delhi</title>
+  <meta name="description" content="Browse 32+ diagnostic blood tests and full body checkup packages at Divya Health Care, West Vinod Nagar, Delhi. CBC, Thyroid, HbA1c, LFT, KFT, Vitamin D, with Free Home Sample Collection.">
+  <meta name="keywords" content="blood test list Delhi, full body checkup package price, CBC test cost West Vinod Nagar, Thyroid test cost Mandawali, HbA1c test price, Divya Health Care tests">
+  
+  <meta property="og:title" content="Tests & Health Packages Explorer | Divya Health Care">
+  <meta property="og:description" content="Explore pathology tests and affordable full body packages with free doorstep collection in East Delhi.">
+  <meta property="og:image" content="arrangement.jpg">
+
+  <link rel="icon" type="image/png" href="logo.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
+
+  <style>
+    /* Explorer Page Specific Styles (Panel 2 Desktop & Mobile) */
+    .explorer-hero {
+      background: linear-gradient(135deg, #0b2545 0%, #134074 100%);
+      color: #ffffff;
+      padding: 44px 0 36px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .explorer-hero-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .explorer-hero-title h1 {
+      color: #ffffff;
+      font-size: 36px;
+      font-weight: 850;
+      margin-bottom: 8px;
+    }
+
+    .explorer-hero-title p {
+      color: #93c5fd;
+      font-size: 16px;
+    }
+
+    .explorer-hero-tag {
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 10px 18px;
+      border-radius: var(--radius-full);
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .explorer-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 32px;
+      padding: 40px 0 60px;
+    }
+
+    /* Sidebar Filters */
+    .filter-sidebar-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-light);
+      padding: 24px;
+      box-shadow: var(--shadow-sm);
+      height: fit-content;
+      position: sticky;
+      top: 96px;
+    }
+
+    .filter-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border-light);
+    }
+
+    .filter-card-header h3 {
+      font-size: 17px;
+      color: var(--primary-navy);
+    }
+
+    .btn-clear-filters {
+      background: none;
+      border: none;
+      color: #0284c7;
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .filter-group {
+      margin-bottom: 22px;
+    }
+
+    .filter-group-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .filter-checkbox-list {
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+    }
+
+    .filter-checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 13.5px;
+      color: var(--text-body);
+      cursor: pointer;
+    }
+
+    .filter-checkbox-label input {
+      accent-color: #0284c7;
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Main Area Controls */
+    .explorer-controls-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .explorer-search-wrap {
+      flex-grow: 1;
+      position: relative;
+    }
+
+    .explorer-search-wrap i {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #94a3b8;
+    }
+
+    .explorer-search-input {
+      width: 100%;
+      height: 46px;
+      padding: 0 16px 0 44px;
+      border-radius: var(--radius-full);
+      border: 1.5px solid var(--border-light);
+      font-size: 14px;
+      outline: none;
+      background: #ffffff;
+    }
+
+    .explorer-search-input:focus {
+      border-color: #0284c7;
+    }
+
+    .explorer-sort-select {
+      height: 46px;
+      padding: 0 16px;
+      border-radius: var(--radius-full);
+      border: 1.5px solid var(--border-light);
+      background: #ffffff;
+      font-size: 13.5px;
+      font-weight: 600;
+      color: var(--text-dark);
+      outline: none;
+      cursor: pointer;
+    }
+
+    /* Tabs Bar */
+    .explorer-type-tabs {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 24px;
+      border-bottom: 1px solid var(--border-light);
+      padding-bottom: 12px;
+    }
+
+    .type-tab-btn {
+      background: #f1f5f9;
+      color: var(--text-body);
+      border: none;
+      padding: 8px 18px;
+      border-radius: var(--radius-full);
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--trans-fast);
+    }
+
+    .type-tab-btn.active {
+      background: var(--primary-navy);
+      color: #ffffff;
+    }
+
+    /* Test Rows List */
+    .individual-tests-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .individual-test-card {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      border: 1.5px solid var(--border-light);
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      transition: var(--trans-fast);
+    }
+
+    .individual-test-card:hover {
+      border-color: #93c5fd;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .test-card-left {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      max-width: 65%;
+    }
+
+    .test-card-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary-navy);
+    }
+
+    .test-card-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+
+    .test-card-badges {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 11.5px;
+      color: #64748b;
+      margin-top: 4px;
+    }
+
+    .test-card-badges span {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .test-card-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .test-card-price-box {
+      text-align: right;
+    }
+
+    .test-card-price {
+      font-size: 18px;
+      font-weight: 850;
+      color: var(--primary-navy);
+    }
+
+    .test-card-orig-price {
+      font-size: 12.5px;
+      color: #94a3b8;
+      text-decoration: line-through;
+    }
+
+    .btn-add-test {
+      background: #f0fdf4;
+      color: #16a34a;
+      border: 1.5px solid #86efac;
+      padding: 9px 20px;
+      border-radius: var(--radius-full);
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--trans-fast);
+    }
+
+    .btn-add-test:hover {
+      background: #16a34a;
+      color: #ffffff;
+    }
+
+    @media (max-width: 900px) {
+      .explorer-layout {
+        grid-template-columns: 1fr;
+      }
+      .filter-sidebar-card {
+        display: none; /* Can be toggled or filtered via tabs */
+      }
+      .explorer-hero-title h1 {
+        font-size: 26px;
+      }
+      .explorer-hero-tag {
+        display: none;
+      }
+      .individual-test-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .test-card-left {
+        max-width: 100%;
+      }
+      .test-card-right {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Announcement Bar -->
+  <div class="top-announcement-bar">
+    <div class="container top-bar-inner">
+      <div class="top-bar-left">
+        <span class="top-bar-item"><i class="fa-solid fa-clock"></i> Lab Timings: 7:00 AM - 9:00 PM (All 7 Days)</span>
+        <span class="top-bar-item"><i class="fa-solid fa-motorcycle"></i> Free Home Sample Collection in East Delhi</span>
+      </div>
+      <div class="top-bar-right">
+        <span><i class="fa-solid fa-phone"></i> Call / WhatsApp:</span>
+        <a href="tel:+918796964512" class="top-phone-link">8796964512</a>
+        <span>|</span>
+        <a href="tel:+918796964513" class="top-phone-link">8796964513</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="brand-logo-wrap" title="Divya Health Care Home">
+        <img src="logo.png" alt="Divya Health Care Logo" class="brand-logo-img">
+        <div class="brand-text-block">
+          <span class="brand-main-title">DIVYA <span class="highlight-red">HEALTH CARE</span></span>
+          <span class="brand-motto">SEHAT • SEVA • SAMMAN</span>
+        </div>
+      </a>
+
+      <nav class="desktop-nav-menu">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="tests.html" class="nav-link active">Tests & Packages</a>
+        <a href="index.html#home-collection" class="nav-link">Home Collection</a>
+        <a href="index.html#why-us" class="nav-link">About Lab</a>
+        <a href="index.html#location" class="nav-link">Contact</a>
+      </nav>
+
+      <div class="header-right-actions">
+        <div class="header-contact-phones">
+          <a href="tel:+918796964512"><i class="fa-solid fa-phone text-accent"></i> 8796964512</a>
+          <a href="tel:+918796964513"><i class="fa-solid fa-phone text-accent"></i> 8796964513</a>
+        </div>
+        <button type="button" class="btn-header-book" data-book-test="Full Body Health Checkup">
+          <i class="fa-solid fa-calendar-check"></i>
+          <span>Book Appointment</span>
+        </button>
+        <button type="button" class="mobile-menu-toggle-btn" id="mobileMenuToggle" aria-label="Open Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Explorer Hero Banner (Panel 2) -->
+  <section class="explorer-hero">
+    <div class="container explorer-hero-inner">
+      <div class="explorer-hero-title">
+        <h1>Tests & Health Packages</h1>
+        <p>Choose from a wide range of diagnostic tests and preventive health packages</p>
+      </div>
+      <div class="explorer-hero-tag">
+        <i class="fa-solid fa-flask-vial"></i>
+        <span>Accurate Tests for a Healthier Tomorrow</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Explorer Layout -->
+  <section class="container explorer-layout">
+    <!-- Sidebar Filters (Desktop Panel 2) -->
+    <aside class="filter-sidebar-card">
+      <div class="filter-card-header">
+        <h3>Filters</h3>
+        <button type="button" class="btn-clear-filters" id="btnClearFilters">Clear All</button>
+      </div>
+
+      <!-- Health Concern -->
+      <div class="filter-group">
+        <div class="filter-group-title">Health Concern</div>
+        <div class="filter-checkbox-list">
+          <label class="filter-checkbox-label">
+            <input type="checkbox" name="healthConcern" value="full-body" checked> General Health
+          </label>
+          <label class="filter-checkbox-label">
+            <input type="checkbox" name="healthConcern" value="diabetes"> Diabetes
+          </label>
+          <label class="filter-checkbox-label">
+            <input type="checkbox" name="healthConcern" value="thyroid"> Thyroid
+          </label>
+          <label class="filter-checkbox-label">
+            <input type="checkbox" name="healthConcern" value="heart"> Heart Health
+          </label>
+          <label class="filter-checkbox-label">
+            <input type="checkbox" name="healthConcern" value="liver-kidney"> Liver & Kidney Health
+          </label>
+          <label class="filter-checkbox-label">
+            <input type="checkbox" name="healthConcern" value="vitamins"> Vitamin Deficiency
+          </label>
+          <label class="filter-checkbox-label">
+            <input type="checkbox" name="healthConcern" value="fitness"> Fitness & Sports
+          </label>
+        </div>
+      </div>
+
+      <!-- Test Type -->
+      <div class="filter-group">
+        <div class="filter-group-title">Test Type</div>
+        <div class="filter-checkbox-list">
+          <label class="filter-checkbox-label">
+            <input type="checkbox" name="testTypeFilter" value="package" checked> Package
+          </label>
+          <label class="filter-checkbox-label">
+            <input type="checkbox" name="testTypeFilter" value="individual" checked> Individual Test
+          </label>
+        </div>
+      </div>
+
+      <!-- Sample Type -->
+      <div class="filter-group">
+        <div class="filter-group-title">Sample Type</div>
+        <div class="filter-checkbox-list">
+          <label class="filter-checkbox-label">
+            <input type="checkbox" name="sampleTypeFilter" value="Blood" checked> Blood
+          </label>
+          <label class="filter-checkbox-label">
+            <input type="checkbox" name="sampleTypeFilter" value="Urine" checked> Urine
+          </label>
+        </div>
+      </div>
+
+      <!-- Collection Mode -->
+      <div class="filter-group">
+        <div class="filter-group-title">Collection Mode</div>
+        <div class="filter-checkbox-list">
+          <label class="filter-checkbox-label">
+            <input type="checkbox" name="collectionMode" value="home" checked> Home Collection
+          </label>
+          <label class="filter-checkbox-label">
+            <input type="checkbox" name="collectionMode" value="clinic" checked> Visit Clinic
+          </label>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Tests Content -->
+    <main class="explorer-main-content">
+      <!-- Search and Sort Controls -->
+      <div class="explorer-controls-bar">
+        <div class="explorer-search-wrap">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="explorerSearchInput" class="explorer-search-input" placeholder="Search tests or packages (e.g. CBC, Lipid, Thyroid, Full Body)...">
+        </div>
+        <select id="explorerSortSelect" class="explorer-sort-select">
+          <option value="popular">Sort by: Most Popular</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+        </select>
+      </div>
+
+      <!-- Type Tabs -->
+      <div class="explorer-type-tabs">
+        <button type="button" class="type-tab-btn active" data-tab-type="all">All (<span id="countAll">32</span>)</button>
+        <button type="button" class="type-tab-btn" data-tab-type="packages">Health Packages (<span id="countPackages">8</span>)</button>
+        <button type="button" class="type-tab-btn" data-tab-type="tests">Individual Tests (<span id="countTests">24</span>)</button>
+      </div>
+
+      <!-- Section: Packages Grid -->
+      <div id="explorerPackagesSection">
+        <h3 style="font-size: 20px; color: var(--primary-navy); margin-bottom: 16px;">Comprehensive Health Checkup Packages</h3>
+        <div class="packages-grid" id="explorerPackagesGrid"></div>
+      </div>
+
+      <!-- Section: Individual Tests List -->
+      <div id="explorerIndividualTestsSection" style="margin-top: 40px;">
+        <h3 style="font-size: 20px; color: var(--primary-navy); margin-bottom: 16px;">Individual Diagnostic Tests</h3>
+        <div class="individual-tests-list" id="explorerTestsList"></div>
+      </div>
+    </main>
+  </section>
+
+  <!-- Package Detail Modal -->
+  <div class="modal-backdrop" id="packageDetailModal">
+    <div class="pkg-detail-modal-card">
+      <div class="pkg-modal-header">
+        <h3 id="pkgModalTitle">Full Body Health Checkup</h3>
+        <button type="button" class="btn-close-modal close-pkg-modal"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="pkg-modal-body">
+        <div class="pkg-modal-hero-split">
+          <div class="pkg-modal-img-wrap">
+            <img id="pkgModalImage" src="Taking test2.jpg" alt="Health Package">
+          </div>
+          <div class="pkg-modal-hero-details">
+            <div class="pkg-modal-stat-tags">
+              <span class="stat-tag tag-tests" id="pkgModalTestCount">18 Tests Included</span>
+              <span class="stat-tag tag-booked">Most Booked</span>
+            </div>
+            <div class="modal-price-box">
+              <span class="price-current" id="pkgModalPrice">₹2,500</span>
+              <span class="price-orig" id="pkgModalOriginalPrice">₹3,500</span>
+              <span class="price-save" id="pkgModalDiscount">Save ₹1,000</span>
+            </div>
+            <p style="font-size: 13px; color: #64748b;">Includes free home sample collection across East Delhi & certified reports.</p>
+          </div>
+        </div>
+
+        <div class="modal-nav-tabs">
+          <button type="button" class="modal-tab-btn" data-tab="about">About</button>
+          <button type="button" class="modal-tab-btn active" data-tab="tests">Tests Included</button>
+          <button type="button" class="modal-tab-btn" data-tab="prep">Preparation</button>
+          <button type="button" class="modal-tab-btn" data-tab="sample">Sample Type</button>
+        </div>
+
+        <div class="tab-content-panel" id="tab-about"></div>
+        <div class="tab-content-panel active" id="tab-tests"></div>
+        <div class="tab-content-panel" id="tab-prep"></div>
+        <div class="tab-content-panel" id="tab-sample"></div>
+      </div>
+
+      <div class="pkg-modal-footer">
+        <button type="button" class="btn-modal-ask-doc" id="btnPkgModalAskDoc">
+          <i class="fa-brands fa-whatsapp" style="color:#25D366;"></i>
+          <span>Ask a Doctor</span>
+        </button>
+        <button type="button" class="btn-modal-book-plan" id="btnPkgModalBook">
+          <span>Book This Plan</span>
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Booking Wizard Modal -->
+  <div class="modal-backdrop" id="bookingModal">
+    <div class="booking-modal-card">
+      <div class="booking-modal-topbar">
+        <h3 id="bookingModalHeaderTitle">Book Appointment</h3>
+        <button type="button" class="btn-close-modal close-modal-btn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="booking-step-indicator">
+        <div class="step-item active" data-step="1">
+          <div class="step-circle">1</div>
+          <span class="step-title">Test</span>
+        </div>
+        <div class="step-item" data-step="2">
+          <div class="step-circle">2</div>
+          <span class="step-title">Date & Time</span>
+        </div>
+        <div class="step-item" data-step="3">
+          <div class="step-circle">3</div>
+          <span class="step-title">Details</span>
+        </div>
+        <div class="step-item" data-step="4">
+          <div class="step-circle">4</div>
+          <span class="step-title">Confirm</span>
+        </div>
+      </div>
+
+      <div class="booking-wizard-body">
+        <div class="booking-step-panel active" id="bookingStep1">
+          <div class="selected-test-summary-card">
+            <div class="selected-test-title-row">
+              <h4 id="modalTestName">Full Body Health Checkup</h4>
+              <span class="package-test-count" id="modalTestCount">18 Tests Included</span>
+            </div>
+            <div class="selected-test-price-row">
+              <span class="modal-test-price" id="modalTestPrice">₹2,500</span>
+              <span class="modal-test-original" id="modalTestOriginalPrice">₹3,500</span>
+              <span class="modal-test-save" id="modalTestSave">Save ₹1,000</span>
+            </div>
+          </div>
+
+          <div class="change-test-field-wrap">
+            <label for="testSelectDropdown">Change Test / Package:</label>
+            <select id="testSelectDropdown" class="styled-select"></select>
+          </div>
+
+          <div class="step-label-title">Choose Collection Type</div>
+          <div class="collection-options-grid">
+            <div class="collection-opt-card selected" id="optHomeCollection">
+              <div class="col-icon-box"><i class="fa-solid fa-motorcycle"></i></div>
+              <div class="col-text-box">
+                <h5>Home Collection</h5>
+                <p>We collect samples safely from your home</p>
+              </div>
+            </div>
+            <div class="collection-opt-card" id="optClinicVisit">
+              <div class="col-icon-box"><i class="fa-solid fa-hospital"></i></div>
+              <div class="col-text-box">
+                <h5>Visit Clinic</h5>
+                <p>Visit our diagnostic centre in West Vinod Nagar</p>
+              </div>
+            </div>
+          </div>
+
+          <button type="button" class="btn-wizard-next" id="btnStep1Next">
+            Continue to Date & Time <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+
+        <div class="booking-step-panel" id="bookingStep2">
+          <div class="step-label-title">Select Date</div>
+          <div class="date-selector-row" id="dateSelectorContainer"></div>
+
+          <div class="step-label-title">Select Time Slot</div>
+          <div class="time-slots-grid" id="timeSlotsContainer"></div>
+
+          <div class="wizard-nav-dual-btns">
+            <button type="button" class="btn-wizard-back" id="btnStep2Back">Back</button>
+            <button type="button" class="btn-wizard-continue" id="btnStep2Next">
+              Continue to Details <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="booking-step-panel" id="bookingStep3">
+          <form id="bookingDetailsForm">
+            <div class="step-label-title">Your Details</div>
+            <div class="booking-form-stack">
+              <div class="form-field-group">
+                <label for="patientName">Full Name *</label>
+                <input type="text" id="patientName" placeholder="Enter patient name" required>
+              </div>
+
+              <div class="form-field-group">
+                <label for="patientPhone">WhatsApp Mobile Number *</label>
+                <input type="tel" id="patientPhone" placeholder="10-digit mobile (e.g. 8796964512)" required pattern="[0-9]{10}">
+              </div>
+
+              <div class="form-field-group" id="stepAddressContainer">
+                <label for="patientAddress">Collection Address (Home / Office) *</label>
+                <textarea id="patientAddress" placeholder="Enter house no, gali no, landmark" rows="2"></textarea>
+                <button type="button" class="location-auto-helper" id="btnFillDefaultLocation">
+                  <i class="fa-solid fa-crosshairs"></i> Quick Auto-fill West Vinod Nagar
+                </button>
+              </div>
+
+              <div class="form-field-group">
+                <label for="patientNotes">Any Note / Special Instructions (Optional)</label>
+                <input type="text" id="patientNotes" placeholder="e.g. Need fasting test at 7:30 AM">
+              </div>
+
+              <div class="consent-checkbox-row">
+                <input type="checkbox" id="patientConsent" checked required>
+                <label for="patientConsent">I agree to be contacted on WhatsApp for appointment confirmation & digital report delivery.</label>
+              </div>
+            </div>
+
+            <div class="wizard-nav-dual-btns">
+              <button type="button" class="btn-wizard-back" id="btnStep3Back">Back</button>
+              <button type="submit" class="btn-confirm-wa-submit">
+                <i class="fa-brands fa-whatsapp"></i> Confirm on WhatsApp
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="booking-step-panel" id="bookingStep4">
+          <div class="confirmation-content-box">
+            <div class="success-check-circle">
+              <i class="fa-solid fa-check"></i>
+            </div>
+            <h4>Booking Confirmed!</h4>
+            <p>Your appointment request has been prepared for WhatsApp communication with Divya Health Care.</p>
+
+            <div class="whatsapp-chat-preview-card">
+              <div class="whatsapp-chat-bubble">
+                <div id="whatsappMessagePreview"></div>
+                <span class="whatsapp-bubble-time">Just now ✓✓</span>
+              </div>
+            </div>
+
+            <button type="button" class="btn-open-wa-final" id="btnSendOnWhatsApp">
+              <i class="fa-brands fa-whatsapp"></i>
+              <span>View & Send on WhatsApp</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Bottom Bar -->
+  <div class="mobile-bottom-bar">
+    <div class="mobile-bottom-bar-inner">
+      <button type="button" class="btn-mobile-bar-book" data-book-test="Full Body Health Checkup">
+        <i class="fa-solid fa-calendar-check"></i>
+        <span>Book a Test</span>
+      </button>
+      <button type="button" class="btn-mobile-bar-wa" data-whatsapp-chat="Home Collection">
+        <i class="fa-brands fa-whatsapp"></i>
+        <span>WhatsApp</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- LIVE ASSISTANCE WIDGET (Bottom Right) -->
+  <div class="live-assistant-wrapper">
+    <div class="assistant-greeting-bubble" id="assistantGreetingBubble">
+      <button type="button" class="close-prompt-btn" id="closePromptBubble" aria-label="Close message">×</button>
+      <p>👋 Need help finding a test or booking home sample collection in West Vinod Nagar?</p>
+    </div>
+
+    <button type="button" class="live-assistant-trigger" id="liveAssistantToggle" aria-label="Open Live Lab Assistant">
+      <span class="assistant-online-ping"></span>
+      <i class="fa-solid fa-comments assistant-open-icon"></i>
+      <i class="fa-solid fa-xmark assistant-close-icon"></i>
+    </button>
+
+    <div class="live-assistant-drawer" id="liveAssistantDrawer">
+      <div class="asst-drawer-header">
+        <div class="asst-header-left">
+          <div class="asst-header-avatar">
+            <i class="fa-solid fa-user-doctor"></i>
+          </div>
+          <div class="asst-header-meta">
+            <h4>Divya Health Assistant</h4>
+            <span><i class="fa-solid fa-circle" style="font-size: 7px;"></i> Online • Typical reply in 2 mins</span>
+          </div>
+        </div>
+        <button type="button" class="asst-close-btn" id="closeAssistantBtn"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="asst-drawer-body">
+        <div class="asst-chat-bubble-system">
+          Hello! Looking for a specific test or package? Our lab team is here to assist.
+        </div>
+
+        <div class="asst-quick-actions-box">
+          <button type="button" class="asst-quick-action-btn" data-action="book-home">
+            <i class="fa-solid fa-motorcycle"></i>
+            <span>Book Home Sample Collection</span>
+          </button>
+          <button type="button" class="asst-quick-action-btn" data-action="upload-rx">
+            <i class="fa-solid fa-camera"></i>
+            <span>Send Prescription on WhatsApp</span>
+          </button>
+          <button type="button" class="asst-quick-action-btn" data-action="fasting-advice">
+            <i class="fa-solid fa-circle-info"></i>
+            <span>Fasting & Preparation Query</span>
+          </button>
+          <button type="button" class="asst-quick-action-btn btn-wa-action" data-action="whatsapp-direct">
+            <i class="fa-brands fa-whatsapp"></i>
+            <span>Direct WhatsApp Chat</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="asst-drawer-footer">
+        <i class="fa-solid fa-shield-check" style="color: #16a34a;"></i> NABL Associated Lab • West Vinod Nagar, Delhi
+      </div>
+    </div>
+  </div>
+
+  <!-- REAL-TIME ACTIVITY TOASTER -->
+  <div class="live-activity-toaster" id="liveActivityToaster">
+    <div class="toast-icon"><i class="fa-solid fa-motorcycle"></i></div>
+    <div class="toast-content">
+      <div class="toast-header-line">
+        <span class="toast-title">Live Activity</span>
+        <span class="toast-time">Just now</span>
+      </div>
+      <p class="toast-text">Sample collection booked in Mandawali</p>
+    </div>
+    <button type="button" class="toast-close-btn" aria-label="Close notification"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="mobile-nav-drawer" id="mobileNavDrawer">
+    <div class="mobile-drawer-content">
+      <div class="mobile-drawer-header">
+        <div class="brand-text-block">
+          <span class="brand-main-title" style="font-size: 17px;">DIVYA <span class="highlight-red">HEALTH</span></span>
+          <span class="brand-motto" style="font-size: 9px;">SEHAT • SEVA • SAMMAN</span>
+        </div>
+        <button type="button" class="btn-close-modal" id="closeMobileDrawer"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <ul class="mobile-drawer-links">
+        <li><a href="index.html"><i class="fa-solid fa-house"></i> Home</a></li>
+        <li><a href="tests.html"><i class="fa-solid fa-vial-virus"></i> Tests & Packages</a></li>
+        <li><a href="index.html#home-collection"><i class="fa-solid fa-motorcycle"></i> Home Collection</a></li>
+        <li><a href="index.html#why-us"><i class="fa-solid fa-microscope"></i> About Laboratory</a></li>
+        <li><a href="index.html#location"><i class="fa-solid fa-location-dot"></i> Clinic Location</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container footer-bottom-bar">
+      <p>© 2026 Divya Health Care. E-395, Gali No.-7, Shanti Marg, West Vinod Nagar, Delhi - 110092</p>
+      <p>Appointments & WhatsApp Home Collection: 8796964512 / 8796964513</p>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/tests-data.js"></script>
+  <script src="js/booking.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    // Explorer Page Logic
+    document.addEventListener('DOMContentLoaded', () => {
+      renderExplorerPage();
+    });
+
+    function renderExplorerPage() {
+      const packagesGrid = document.getElementById('explorerPackagesGrid');
+      const testsList = document.getElementById('explorerTestsList');
+      const searchInput = document.getElementById('explorerSearchInput');
+      const sortSelect = document.getElementById('explorerSortSelect');
+      const typeTabs = document.querySelectorAll('.type-tab-btn');
+
+      let currentTypeTab = 'all';
+
+      // Check URL query parameters (e.g. ?category=diabetes or ?search=CBC)
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlCategory = urlParams.get('category');
+      const urlSearch = urlParams.get('search');
+      if (urlSearch) {
+        searchInput.value = urlSearch;
+      }
+
+      function updateExplorer() {
+        const query = searchInput.value.trim().toLowerCase();
+        const sortMode = sortSelect.value;
+
+        // Filter packages
+        let packages = [...window.diagnosticData.packages];
+        let tests = [...window.diagnosticData.individualTests];
+
+        if (urlCategory && urlCategory !== 'all') {
+          packages = packages.filter(p => p.category === urlCategory);
+          tests = tests.filter(t => t.category === urlCategory);
+        }
+
+        if (query) {
+          packages = packages.filter(p => p.name.toLowerCase().includes(query) || (p.featuredTags && p.featuredTags.some(t => t.toLowerCase().includes(query))));
+          tests = tests.filter(t => t.name.toLowerCase().includes(query) || (t.description && t.description.toLowerCase().includes(query)));
+        }
+
+        // Sorting
+        if (sortMode === 'price-asc') {
+          packages.sort((a, b) => a.price - b.price);
+          tests.sort((a, b) => a.price - b.price);
+        } else if (sortMode === 'price-desc') {
+          packages.sort((a, b) => b.price - a.price);
+          tests.sort((a, b) => b.price - a.price);
+        }
+
+        // Counts
+        document.getElementById('countPackages').textContent = packages.length;
+        document.getElementById('countTests').textContent = tests.length;
+        document.getElementById('countAll').textContent = packages.length + tests.length;
+
+        // Render Packages
+        const packagesSection = document.getElementById('explorerPackagesSection');
+        if (currentTypeTab === 'tests' || packages.length === 0) {
+          packagesSection.style.display = 'none';
+        } else {
+          packagesSection.style.display = 'block';
+          packagesGrid.innerHTML = packages.map(pkg => `
+            <div class="package-card ${pkg.badge === 'Most Popular' ? 'featured' : ''}">
+              ${pkg.badge ? `<div class="package-badge">${pkg.badge}</div>` : ''}
+              <div class="package-card-header">
+                <div class="pkg-icon-wrap">
+                  <i class="fa-solid fa-person-circle-check"></i>
+                </div>
+                <div class="pkg-header-text">
+                  <h3 class="package-title">${pkg.name}</h3>
+                  <span class="package-test-count">${pkg.testCount} Tests Included</span>
+                </div>
+              </div>
+              <p class="package-description">${pkg.tagline}</p>
+              <div class="package-pricing">
+                <div class="pricing-wrap">
+                  <span class="current-price">₹${pkg.price.toLocaleString('en-IN')}</span>
+                  <span class="original-price">₹${pkg.originalPrice.toLocaleString('en-IN')}</span>
+                </div>
+                <span class="save-badge">Save ₹${pkg.discount.toLocaleString('en-IN')}</span>
+              </div>
+              <div class="package-tags-wrap">
+                ${pkg.featuredTags.map(t => `<span class="pkg-tag">${t}</span>`).join('')}
+              </div>
+              <div class="package-footer-actions">
+                <button type="button" class="btn-primary-book" data-book-test="${pkg.id}">
+                  <span>Book Now</span>
+                  <i class="fa-solid fa-arrow-right"></i>
+                </button>
+                <button type="button" class="btn-outline-details" onclick="openPackageDetailModal('${pkg.id}')">
+                  Details
+                </button>
+              </div>
+            </div>
+          `).join('');
+        }
+
+        // Render Tests
+        const testsSection = document.getElementById('explorerIndividualTestsSection');
+        if (currentTypeTab === 'packages' || tests.length === 0) {
+          testsSection.style.display = 'none';
+        } else {
+          testsSection.style.display = 'block';
+          testsList.innerHTML = tests.map(test => `
+            <div class="individual-test-card">
+              <div class="test-card-left">
+                <div class="test-card-name">${test.name}</div>
+                <div class="test-card-desc">${test.description}</div>
+                <div class="test-card-badges">
+                  <span><i class="fa-solid fa-clock"></i> ${test.reportTime}</span>
+                  <span>•</span>
+                  <span><i class="fa-solid fa-vial"></i> ${test.sampleType}</span>
+                  <span>•</span>
+                  <span><i class="fa-solid fa-bowl-food"></i> ${test.fastingRequired}</span>
+                </div>
+              </div>
+              <div class="test-card-right">
+                <div class="test-card-price-box">
+                  <div class="test-card-price">₹${test.price.toLocaleString('en-IN')}</div>
+                  <div class="test-card-orig-price">₹${test.originalPrice.toLocaleString('en-IN')}</div>
+                </div>
+                <button type="button" class="btn-add-test" data-book-test="${test.id}">
+                  <i class="fa-solid fa-plus"></i> Book
+                </button>
+              </div>
+            </div>
+          `).join('');
+        }
+      }
+
+      // Event listeners
+      searchInput.addEventListener('input', updateExplorer);
+      sortSelect.addEventListener('change', updateExplorer);
+
+      typeTabs.forEach(btn => {
+        btn.addEventListener('click', () => {
+          typeTabs.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentTypeTab = btn.getAttribute('data-tab-type');
+          updateExplorer();
+        });
+      });
+
+      // Clear filters
+      const clearBtn = document.getElementById('btnClearFilters');
+      if (clearBtn) {
+        clearBtn.addEventListener('click', () => {
+          searchInput.value = '';
+          document.querySelectorAll('.filter-sidebar-card input[type="checkbox"]').forEach(cb => cb.checked = true);
+          updateExplorer();
+        });
+      }
+
+      updateExplorer();
+    }
+  </script>
+</body>
+</html>
