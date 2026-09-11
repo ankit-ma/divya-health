@@ -3128,3 +3128,230 @@ img {
 .toast-close-btn:hover {
   color: var(--text-dark);
 }
+
+/* ==========================================================================
+   FOOTER DEVELOPER CREDIT & OFFICIAL PRICE LIST TABLE
+   ========================================================================== */
+.footer-dev-credit {
+  font-size: 13px;
+  color: #94a3b8;
+  margin-top: 4px;
+}
+
+.footer-dev-credit a {
+  color: #38bdf8;
+  text-decoration: none;
+  font-weight: 600;
+  transition: var(--trans-fast);
+}
+
+.footer-dev-credit a:hover {
+  color: #7dd3fc;
+  text-decoration: underline;
+}
+
+.price-list-view-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.price-list-view-toggle {
+  display: inline-flex;
+  background: #f1f5f9;
+  border-radius: var(--radius-full);
+  padding: 4px;
+  gap: 4px;
+  border: 1px solid var(--border-light);
+}
+
+.view-toggle-btn {
+  border: none;
+  background: transparent;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--trans-fast);
+}
+
+.view-toggle-btn.active {
+  background: #ffffff;
+  color: var(--primary-navy);
+  box-shadow: var(--shadow-sm);
+}
+
+.official-price-table-wrapper {
+  overflow-x: auto;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--border-light);
+  background: #ffffff;
+  box-shadow: var(--shadow-xs);
+  margin-top: 12px;
+}
+
+.official-price-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 13.5px;
+}
+
+.official-price-table th {
+  background: var(--primary-navy);
+  color: #ffffff;
+  padding: 13px 16px;
+  font-weight: 700;
+  font-size: 12.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.official-price-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--border-light);
+  vertical-align: middle;
+}
+
+.official-price-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.official-price-table tbody tr:hover {
+  background: #f8fafc;
+}
+
+.price-table-sno {
+  font-weight: 700;
+  color: #64748b;
+  font-size: 12.5px;
+  text-align: center;
+  width: 50px;
+}
+
+.price-table-name {
+  font-weight: 700;
+  color: var(--primary-navy);
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.price-table-subtext {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-muted);
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.price-table-mrp {
+  color: #94a3b8;
+  text-decoration: line-through;
+  font-weight: 600;
+  font-size: 13.5px;
+}
+
+.price-table-offer {
+  font-weight: 850;
+  color: #0284c7;
+  font-size: 16px;
+}
+
+.price-table-save {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  background: #ecfdf5;
+  color: #059669;
+}
+
+.price-table-actions {
+  text-align: right;
+  white-space: nowrap;
+}
+
+.price-table-book-btn {
+  background: #f0fdf4;
+  color: #16a34a;
+  border: 1.5px solid #86efac;
+  padding: 6px 14px;
+  border-radius: var(--radius-full);
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--trans-fast);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.price-table-book-btn:hover {
+  background: #16a34a;
+  color: #ffffff;
+}
+
+.price-list-banner-ribbon {
+  background: linear-gradient(135deg, #0b1f3a 0%, #0369a1 100%);
+  color: #ffffff;
+  border-radius: var(--radius-md);
+  padding: 18px 24px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.ribbon-features {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.ribbon-feat-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #e0f2fe;
+}
+
+.ribbon-feat-item i {
+  color: #38bdf8;
+  font-size: 15px;
+}
+
+.ribbon-cta-btn {
+  background: #ffffff;
+  color: var(--primary-navy);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 8px 18px;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: var(--trans-fast);
+}
+
+.ribbon-cta-btn:hover {
+  background: #f0fdf4;
+  color: #16a34a;
+}
+

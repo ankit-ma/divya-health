@@ -561,3 +561,45 @@
     font-size: 15px;
   }
 }
+
+/* Price List & Table Responsive */
+@media (max-width: 768px) {
+  .price-list-banner-ribbon {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px;
+    gap: 14px;
+  }
+
+  .ribbon-features {
+    gap: 12px;
+  }
+
+  .ribbon-feat-item {
+    font-size: 12px;
+  }
+
+  .ribbon-cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .price-list-view-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .price-list-view-toggle {
+    width: 100%;
+  }
+
+  .view-toggle-btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .official-price-table {
+    min-width: 650px;
+  }
+}
+

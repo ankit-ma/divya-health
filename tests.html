@@ -411,6 +411,23 @@
       </div>
     </div>
   </section>
+ 
+  <!-- Quality & Accreditation Trust Ribbon -->
+  <div class="container" style="margin-top: -24px; margin-bottom: 24px; position: relative; z-index: 2;">
+    <div class="price-list-banner-ribbon">
+      <div class="ribbon-features">
+        <span class="ribbon-feat-item"><i class="fa-solid fa-circle-check"></i> Accurate Results</span>
+        <span class="ribbon-feat-item"><i class="fa-solid fa-award"></i> NABL Certified Lab</span>
+        <span class="ribbon-feat-item"><i class="fa-solid fa-microscope"></i> Advanced Technology</span>
+        <span class="ribbon-feat-item"><i class="fa-solid fa-file-medical"></i> Digital Reports</span>
+        <span class="ribbon-feat-item"><i class="fa-solid fa-motorcycle"></i> Free Home Sample Collection</span>
+      </div>
+      <a href="tel:+918796964512" class="ribbon-cta-btn">
+        <i class="fa-solid fa-phone"></i>
+        <span>Call: 8796964512</span>
+      </a>
+    </div>
+  </div>
 
   <!-- Main Explorer Layout -->
   <section class="container explorer-layout">
@@ -429,22 +446,25 @@
             <input type="checkbox" name="healthConcern" value="full-body" checked> General Health
           </label>
           <label class="filter-checkbox-label">
-            <input type="checkbox" name="healthConcern" value="diabetes"> Diabetes
+            <input type="checkbox" name="healthConcern" value="diabetes" checked> Diabetes
           </label>
           <label class="filter-checkbox-label">
-            <input type="checkbox" name="healthConcern" value="thyroid"> Thyroid
+            <input type="checkbox" name="healthConcern" value="thyroid" checked> Thyroid
           </label>
           <label class="filter-checkbox-label">
-            <input type="checkbox" name="healthConcern" value="heart"> Heart Health
+            <input type="checkbox" name="healthConcern" value="heart" checked> Heart Health
           </label>
           <label class="filter-checkbox-label">
-            <input type="checkbox" name="healthConcern" value="liver-kidney"> Liver & Kidney Health
+            <input type="checkbox" name="healthConcern" value="liver-kidney" checked> Liver & Kidney Health
           </label>
           <label class="filter-checkbox-label">
-            <input type="checkbox" name="healthConcern" value="vitamins"> Vitamin Deficiency
+            <input type="checkbox" name="healthConcern" value="vitamins" checked> Vitamin Deficiency
           </label>
           <label class="filter-checkbox-label">
-            <input type="checkbox" name="healthConcern" value="fitness"> Fitness & Sports
+            <input type="checkbox" name="healthConcern" value="fitness" checked> Fitness & Sports
+          </label>
+          <label class="filter-checkbox-label">
+            <input type="checkbox" name="healthConcern" value="blood" checked> Blood & Infection
           </label>
         </div>
       </div>
@@ -454,10 +474,10 @@
         <div class="filter-group-title">Test Type</div>
         <div class="filter-checkbox-list">
           <label class="filter-checkbox-label">
-            <input type="checkbox" name="testTypeFilter" value="package" checked> Package
+            <input type="checkbox" name="testTypeFilter" value="package" checked> Packages
           </label>
           <label class="filter-checkbox-label">
-            <input type="checkbox" name="testTypeFilter" value="individual" checked> Individual Test
+            <input type="checkbox" name="testTypeFilter" value="individual" checked> Individual Tests
           </label>
         </div>
       </div>
@@ -480,7 +500,7 @@
         <div class="filter-group-title">Collection Mode</div>
         <div class="filter-checkbox-list">
           <label class="filter-checkbox-label">
-            <input type="checkbox" name="collectionMode" value="home" checked> Home Collection
+            <input type="checkbox" name="collectionMode" value="home" checked> Free Home Collection
           </label>
           <label class="filter-checkbox-label">
             <input type="checkbox" name="collectionMode" value="clinic" checked> Visit Clinic
@@ -495,7 +515,7 @@
       <div class="explorer-controls-bar">
         <div class="explorer-search-wrap">
           <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" id="explorerSearchInput" class="explorer-search-input" placeholder="Search tests or packages (e.g. CBC, Lipid, Thyroid, Full Body)...">
+          <input type="text" id="explorerSearchInput" class="explorer-search-input" placeholder="Search tests or packages (e.g. CBC, Lipid, Thyroid, CRP, Vitamin D)...">
         </div>
         <select id="explorerSortSelect" class="explorer-sort-select">
           <option value="popular">Sort by: Most Popular</option>
@@ -506,9 +526,9 @@
 
       <!-- Type Tabs -->
       <div class="explorer-type-tabs">
-        <button type="button" class="type-tab-btn active" data-tab-type="all">All (<span id="countAll">32</span>)</button>
-        <button type="button" class="type-tab-btn" data-tab-type="packages">Health Packages (<span id="countPackages">8</span>)</button>
-        <button type="button" class="type-tab-btn" data-tab-type="tests">Individual Tests (<span id="countTests">24</span>)</button>
+        <button type="button" class="type-tab-btn active" data-tab-type="all">All (<span id="countAll">48</span>)</button>
+        <button type="button" class="type-tab-btn" data-tab-type="packages">Health Packages (<span id="countPackages">7</span>)</button>
+        <button type="button" class="type-tab-btn" data-tab-type="tests">Individual Tests (<span id="countTests">41</span>)</button>
       </div>
 
       <!-- Section: Packages Grid -->
@@ -519,8 +539,42 @@
 
       <!-- Section: Individual Tests List -->
       <div id="explorerIndividualTestsSection" style="margin-top: 40px;">
-        <h3 style="font-size: 20px; color: var(--primary-navy); margin-bottom: 16px;">Individual Diagnostic Tests</h3>
+        <div class="price-list-view-header">
+          <div>
+            <h3 style="font-size: 20px; color: var(--primary-navy); margin-bottom: 4px;">Individual Tests & Official Price List</h3>
+            <p style="font-size: 13px; color: var(--text-muted); margin: 0;">Transparent laboratory rates with MRP, discounted offer price, and free home sample collection</p>
+          </div>
+          <div class="price-list-view-toggle">
+            <button type="button" class="view-toggle-btn active" id="btnViewCards" aria-label="Card View">
+              <i class="fa-solid fa-grip"></i> Cards
+            </button>
+            <button type="button" class="view-toggle-btn" id="btnViewTable" aria-label="Table View">
+              <i class="fa-solid fa-table-list"></i> Rate Table
+            </button>
+          </div>
+        </div>
+
         <div class="individual-tests-list" id="explorerTestsList"></div>
+
+        <div class="official-price-table-wrapper" id="explorerPriceTableWrapper" style="display: none;">
+          <table class="official-price-table">
+            <thead>
+              <tr>
+                <th style="width: 50px; text-align: center;">S.No.</th>
+                <th>Test / Investigation Name</th>
+                <th>Sample / Fasting</th>
+                <th>Turnaround</th>
+                <th style="text-align: right;">MRP (₹)</th>
+                <th style="text-align: right;">Offer Price (₹)</th>
+                <th style="text-align: center;">You Save</th>
+                <th style="text-align: right;">Action</th>
+              </tr>
+            </thead>
+            <tbody id="explorerPriceTableBody">
+              <!-- Rendered dynamically -->
+            </tbody>
+          </table>
+        </div>
       </div>
     </main>
   </section>
@@ -840,6 +894,7 @@
     <div class="container footer-bottom-bar">
       <p>© 2026 Divya Health Care. E-395, Gali No.-7, Shanti Marg, West Vinod Nagar, Delhi - 110092</p>
       <p>Appointments & WhatsApp Home Collection: 8796964512 / 8796964513</p>
+      <p class="footer-dev-credit">Developed and managed by <a href="https://apmsnetworks.com/" target="_blank" rel="noopener noreferrer">APMSnetworks</a></p>
     </div>
   </footer>
 
@@ -856,11 +911,16 @@
     function renderExplorerPage() {
       const packagesGrid = document.getElementById('explorerPackagesGrid');
       const testsList = document.getElementById('explorerTestsList');
+      const priceTableWrapper = document.getElementById('explorerPriceTableWrapper');
+      const priceTableBody = document.getElementById('explorerPriceTableBody');
       const searchInput = document.getElementById('explorerSearchInput');
       const sortSelect = document.getElementById('explorerSortSelect');
       const typeTabs = document.querySelectorAll('.type-tab-btn');
+      const btnViewCards = document.getElementById('btnViewCards');
+      const btnViewTable = document.getElementById('btnViewTable');
 
       let currentTypeTab = 'all';
+      let currentViewMode = 'cards'; // 'cards' or 'table'
 
       // Check URL query parameters (e.g. ?category=diabetes or ?search=CBC)
       const urlParams = new URLSearchParams(window.location.search);
@@ -870,22 +930,62 @@
         searchInput.value = urlSearch;
       }
 
+      // View toggle buttons
+      if (btnViewCards && btnViewTable) {
+        btnViewCards.addEventListener('click', () => {
+          currentViewMode = 'cards';
+          btnViewCards.classList.add('active');
+          btnViewTable.classList.remove('active');
+          if (testsList) testsList.style.display = 'flex';
+          if (priceTableWrapper) priceTableWrapper.style.display = 'none';
+        });
+
+        btnViewTable.addEventListener('click', () => {
+          currentViewMode = 'table';
+          btnViewTable.classList.add('active');
+          btnViewCards.classList.remove('active');
+          if (testsList) testsList.style.display = 'none';
+          if (priceTableWrapper) priceTableWrapper.style.display = 'block';
+        });
+      }
+
       function updateExplorer() {
         const query = searchInput.value.trim().toLowerCase();
         const sortMode = sortSelect.value;
+
+        // Get selected health concerns
+        const selectedConcerns = Array.from(document.querySelectorAll('input[name="healthConcern"]:checked')).map(cb => cb.value);
+        // Get selected sample types
+        const selectedSampleTypes = Array.from(document.querySelectorAll('input[name="sampleTypeFilter"]:checked')).map(cb => cb.value);
+        // Get selected test types
+        const selectedTestTypes = Array.from(document.querySelectorAll('input[name="testTypeFilter"]:checked')).map(cb => cb.value);
 
         // Filter packages
         let packages = [...window.diagnosticData.packages];
         let tests = [...window.diagnosticData.individualTests];
 
+        // URL category filter
         if (urlCategory && urlCategory !== 'all') {
           packages = packages.filter(p => p.category === urlCategory);
           tests = tests.filter(t => t.category === urlCategory);
         }
 
+        // Sidebar concern filter (if any are unchecked)
+        if (selectedConcerns.length > 0 && selectedConcerns.length < 8) {
+          packages = packages.filter(p => selectedConcerns.includes(p.category));
+          tests = tests.filter(t => selectedConcerns.includes(t.category));
+        }
+
+        // Sample type filter
+        if (selectedSampleTypes.length > 0 && selectedSampleTypes.length < 2) {
+          packages = packages.filter(p => selectedSampleTypes.some(st => p.sampleType && p.sampleType.toLowerCase().includes(st.toLowerCase())));
+          tests = tests.filter(t => selectedSampleTypes.some(st => t.sampleType && t.sampleType.toLowerCase().includes(st.toLowerCase())));
+        }
+
+        // Search query filter
         if (query) {
           packages = packages.filter(p => p.name.toLowerCase().includes(query) || (p.featuredTags && p.featuredTags.some(t => t.toLowerCase().includes(query))));
-          tests = tests.filter(t => t.name.toLowerCase().includes(query) || (t.description && t.description.toLowerCase().includes(query)));
+          tests = tests.filter(t => t.name.toLowerCase().includes(query) || (t.description && t.description.toLowerCase().includes(query)) || (t.category && t.category.toLowerCase().includes(query)));
         }
 
         // Sorting
@@ -904,7 +1004,9 @@
 
         // Render Packages
         const packagesSection = document.getElementById('explorerPackagesSection');
-        if (currentTypeTab === 'tests' || packages.length === 0) {
+        const showPackages = (currentTypeTab === 'all' || currentTypeTab === 'packages') && (!selectedTestTypes.length || selectedTestTypes.includes('package')) && packages.length > 0;
+        
+        if (!showPackages) {
           packagesSection.style.display = 'none';
         } else {
           packagesSection.style.display = 'block';
@@ -946,40 +1048,99 @@
 
         // Render Tests
         const testsSection = document.getElementById('explorerIndividualTestsSection');
-        if (currentTypeTab === 'packages' || tests.length === 0) {
+        const showTests = (currentTypeTab === 'all' || currentTypeTab === 'tests') && (!selectedTestTypes.length || selectedTestTypes.includes('individual')) && tests.length > 0;
+
+        if (!showTests) {
           testsSection.style.display = 'none';
         } else {
           testsSection.style.display = 'block';
-          testsList.innerHTML = tests.map(test => `
-            <div class="individual-test-card">
-              <div class="test-card-left">
-                <div class="test-card-name">${test.name}</div>
-                <div class="test-card-desc">${test.description}</div>
-                <div class="test-card-badges">
-                  <span><i class="fa-solid fa-clock"></i> ${test.reportTime}</span>
-                  <span>•</span>
-                  <span><i class="fa-solid fa-vial"></i> ${test.sampleType}</span>
-                  <span>•</span>
-                  <span><i class="fa-solid fa-bowl-food"></i> ${test.fastingRequired}</span>
+
+          // 1. Render Card View
+          testsList.innerHTML = tests.map(test => {
+            const discount = Math.max(0, test.originalPrice - test.price);
+            return `
+              <div class="individual-test-card">
+                <div class="test-card-left">
+                  <div class="test-card-name">${test.name}</div>
+                  <div class="test-card-desc">${test.description}</div>
+                  <div class="test-card-badges">
+                    <span><i class="fa-solid fa-clock"></i> ${test.reportTime}</span>
+                    <span>•</span>
+                    <span><i class="fa-solid fa-vial"></i> ${test.sampleType}</span>
+                    <span>•</span>
+                    <span><i class="fa-solid fa-bowl-food"></i> ${test.fastingRequired}</span>
+                  </div>
+                </div>
+                <div class="test-card-right">
+                  <div class="test-card-price-box">
+                    <div class="test-card-price">₹${test.price.toLocaleString('en-IN')}</div>
+                    ${discount > 0 ? `<div class="test-card-orig-price">₹${test.originalPrice.toLocaleString('en-IN')}</div>` : ''}
+                    ${discount > 0 ? `<div style="font-size: 11px; color: #16a34a; font-weight: 700;">Save ₹${discount}</div>` : ''}
+                  </div>
+                  <button type="button" class="btn-add-test" data-book-test="${test.id}">
+                    <i class="fa-solid fa-plus"></i> Book
+                  </button>
                 </div>
               </div>
-              <div class="test-card-right">
-                <div class="test-card-price-box">
-                  <div class="test-card-price">₹${test.price.toLocaleString('en-IN')}</div>
-                  <div class="test-card-orig-price">₹${test.originalPrice.toLocaleString('en-IN')}</div>
-                </div>
-                <button type="button" class="btn-add-test" data-book-test="${test.id}">
-                  <i class="fa-solid fa-plus"></i> Book
-                </button>
-              </div>
-            </div>
-          `).join('');
+            `;
+          }).join('');
+
+          // 2. Render Table View (Official Price List View)
+          if (priceTableBody) {
+            priceTableBody.innerHTML = tests.map((test, index) => {
+              const sno = String(index + 1).padStart(2, '0');
+              const discount = Math.max(0, test.originalPrice - test.price);
+              const savePercent = test.originalPrice > test.price 
+                ? Math.round(((test.originalPrice - test.price) / test.originalPrice) * 100) 
+                : 0;
+
+              return `
+                <tr>
+                  <td class="price-table-sno">${sno}</td>
+                  <td>
+                    <div class="price-table-name">
+                      <span>${test.name}</span>
+                      <div class="price-table-subtext">
+                        <span><i class="fa-solid fa-vial"></i> ${test.sampleType}</span>
+                        <span>•</span>
+                        <span><i class="fa-solid fa-bowl-food"></i> ${test.fastingRequired}</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <span style="font-size: 12px; color: #475569;">${test.fastingRequired}</span>
+                  </td>
+                  <td>
+                    <span style="font-size: 12.5px; color: #0284c7; font-weight: 600;"><i class="fa-solid fa-clock"></i> ${test.reportTime}</span>
+                  </td>
+                  <td style="text-align: right;">
+                    <span class="price-table-mrp">₹${test.originalPrice.toLocaleString('en-IN')}</span>
+                  </td>
+                  <td style="text-align: right;">
+                    <span class="price-table-offer">₹${test.price.toLocaleString('en-IN')}</span>
+                  </td>
+                  <td style="text-align: center;">
+                    ${discount > 0 ? `<span class="price-table-save">Save ₹${discount.toLocaleString('en-IN')} (${savePercent}%)</span>` : `<span style="color:#94a3b8; font-size:12px;">Standard Rate</span>`}
+                  </td>
+                  <td class="price-table-actions">
+                    <button type="button" class="price-table-book-btn" data-book-test="${test.id}">
+                      <i class="fa-solid fa-calendar-plus"></i> Book
+                    </button>
+                  </td>
+                </tr>
+              `;
+            }).join('');
+          }
         }
       }
 
       // Event listeners
       searchInput.addEventListener('input', updateExplorer);
       sortSelect.addEventListener('change', updateExplorer);
+
+      document.querySelectorAll('.filter-sidebar-card input[type="checkbox"]').forEach(cb => {
+        cb.addEventListener('change', updateExplorer);
+      });
 
       typeTabs.forEach(btn => {
         btn.addEventListener('click', () => {
