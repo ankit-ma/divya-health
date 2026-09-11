@@ -731,11 +731,14 @@
               </div>
 
               <div class="form-field-group" id="stepAddressContainer">
-                <label for="patientAddress">Collection Address (Home / Office) *</label>
-                <textarea id="patientAddress" placeholder="Enter house no, gali no, landmark" rows="2"></textarea>
-                <button type="button" class="location-auto-helper" id="btnFillDefaultLocation">
-                  <i class="fa-solid fa-crosshairs"></i> Quick Auto-fill West Vinod Nagar
-                </button>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <label for="patientAddress" style="margin-bottom: 0;">Collection Address (Home / Office) *</label>
+                  <button type="button" class="btn-locate-inline" id="btnModalLocate">
+                    <i class="fa-solid fa-location-crosshairs"></i>
+                    <span>Locate Me</span>
+                  </button>
+                </div>
+                <textarea id="patientAddress" placeholder="Type house no, gali no, landmark or click Locate Me" rows="2"></textarea>
               </div>
 
               <div class="form-field-group">

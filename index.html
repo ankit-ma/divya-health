@@ -70,10 +70,10 @@
     },
     "geo": {
       "@type": "GeoCoordinates",
-      "latitude": 28.6294,
-      "longitude": 77.3015
+      "latitude": 28.623705,
+      "longitude": 77.294769
     },
-    "hasMap": "https://maps.app.goo.gl/azfvPmQHLmxPnsgY7",
+    "hasMap": "https://maps.app.goo.gl/HMQW6MZr21qmqoC79",
     "openingHoursSpecification": [
       {
         "@type": "OpeningHoursSpecification",
@@ -260,13 +260,13 @@
               <option value="FBS / RBS / Sugar Test (₹70)">Blood Sugar (FBS / RBS) - ₹70</option>
             </select>
 
-            <select class="hero-quick-select" id="heroLocalitySelect">
-              <option value="West Vinod Nagar">West Vinod Nagar</option>
-              <option value="Mandawali">Mandawali</option>
-              <option value="Mayur Vihar Ph 1 & 2">Mayur Vihar Ph 1 & 2</option>
-              <option value="IP Extension / Patparganj">IP Extension</option>
-              <option value="Laxmi Nagar / Preet Vihar">Laxmi Nagar</option>
-            </select>
+            <div class="hero-address-group">
+              <input type="text" class="hero-quick-input hero-address-input" id="heroAddressInput" placeholder="Type your address / area..." required>
+              <button type="button" class="btn-hero-locate" id="btnHeroLocate" title="Detect your current location">
+                <i class="fa-solid fa-location-crosshairs"></i>
+                <span class="locate-btn-text">Locate Me</span>
+              </button>
+            </div>
 
             <input type="tel" class="hero-quick-input" id="heroPhoneInput" placeholder="10-digit WhatsApp No." pattern="[0-9]{10}" required>
 
@@ -613,7 +613,7 @@
         <div class="map-wrapper-card">
           <div class="map-iframe-container">
             <iframe 
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14008.225!2d77.3015!3d28.6294!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce5b934c4d007%3A0xba870d61f8ecad88!2sDivya%20health%20care%2C%20E%20296%20Gali%20no%207%2C%20Shanti%20Marg%2C%20West%20Vinod%20Nagar%2C%20Mandawali%2C%20Delhi%2C%20110092!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+              src="https://maps.google.com/maps?q=28.623705,77.294769&hl=en&z=17&output=embed" 
               width="100%" 
               height="360" 
               style="border:0;" 
@@ -625,7 +625,7 @@
           </div>
           <div class="map-footer-bar">
             <span><strong>Divya Health Care</strong> • 4.9 ★★★★★ on Google</span>
-            <a href="https://maps.app.goo.gl/azfvPmQHLmxPnsgY7?g_st=iw" target="_blank" rel="noopener" class="btn-open-google-maps">
+            <a href="https://maps.app.goo.gl/HMQW6MZr21qmqoC79" target="_blank" rel="noopener" class="btn-open-google-maps">
               <i class="fa-solid fa-diamond-turn-right"></i>
               <span>Get Directions</span>
             </a>
@@ -820,7 +820,7 @@
           <li><a href="#home-collection">Book Home Collection</a></li>
           <li><a href="#why-us">About Our Lab</a></li>
           <li><a href="#faq">FAQs & Preparation</a></li>
-          <li><a href="https://maps.app.goo.gl/azfvPmQHLmxPnsgY7?g_st=iw" target="_blank" rel="noopener">Find on Google Maps</a></li>
+          <li><a href="https://maps.app.goo.gl/HMQW6MZr21qmqoC79" target="_blank" rel="noopener">Find on Google Maps</a></li>
         </ul>
       </div>
 
@@ -1151,11 +1151,14 @@
               </div>
 
               <div class="form-field-group" id="stepAddressContainer">
-                <label for="patientAddress">Collection Address (Home / Office) *</label>
-                <textarea id="patientAddress" placeholder="Enter house no, gali no, landmark (e.g. Gali No. 7, West Vinod Nagar)" rows="2"></textarea>
-                <button type="button" class="location-auto-helper" id="btnFillDefaultLocation">
-                  <i class="fa-solid fa-crosshairs"></i> Quick Auto-fill West Vinod Nagar
-                </button>
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <label for="patientAddress" style="margin-bottom: 0;">Collection Address (Home / Office) *</label>
+                  <button type="button" class="btn-locate-inline" id="btnModalLocate">
+                    <i class="fa-solid fa-location-crosshairs"></i>
+                    <span>Locate Me</span>
+                  </button>
+                </div>
+                <textarea id="patientAddress" placeholder="Type house no, gali no, landmark or click Locate Me" rows="2"></textarea>
               </div>
 
               <div class="form-field-group">

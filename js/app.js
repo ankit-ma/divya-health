@@ -143,15 +143,33 @@ function initHeroQuickBook() {
   const form = document.getElementById('heroQuickBookForm');
   if (!form) return;
 
+  const addressInput = document.getElementById('heroAddressInput');
+  const locateBtn = document.getElementById('btnHeroLocate');
+
+  if (locateBtn) {
+    locateBtn.addEventListener('click', () => {
+      if (typeof window.locateMeHandler === 'function') {
+        window.locateMeHandler(addressInput, locateBtn, (lat, lon) => {
+          window.heroGpsLocation = { lat, lon };
+        });
+      }
+    });
+  }
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
     const testSelect = document.getElementById('heroTestSelect');
     const phoneInput = document.getElementById('heroPhoneInput');
-    const localitySelect = document.getElementById('heroLocalitySelect');
 
     const testName = testSelect ? testSelect.value : 'Full Body Health Checkup';
     const phone = phoneInput ? phoneInput.value.trim() : '';
-    const locality = localitySelect ? localitySelect.value : 'West Vinod Nagar';
+    const address = addressInput ? addressInput.value.trim() : '';
+
+    if (!address) {
+      alert('Please type your address or click Locate Me.');
+      if (addressInput) addressInput.focus();
+      return;
+    }
 
     if (!phone || phone.replace(/\D/g, '').length < 10) {
       alert('Please enter your 10-digit WhatsApp mobile number.');
@@ -159,15 +177,19 @@ function initHeroQuickBook() {
       return;
     }
 
+    const gpsLine = window.heroGpsLocation 
+      ? `🗺️ *GPS Location:* https://maps.google.com/?q=${window.heroGpsLocation.lat},${window.heroGpsLocation.lon}\n` 
+      : '';
+
     // Direct WhatsApp home collection dispatch
     const msg = 
 `*Fast Home Sample Collection Request*
 *DIVYA HEALTH CARE - East Delhi*
 ━━━━━━━━━━━━━━━━━━━━
 🧪 *Test / Package:* ${testName}
-📍 *Area / Locality:* ${locality}
-📞 *Mobile Number:* ${phone}
-🛵 *Request:* Please dispatch phlebotomist for home collection.
+📍 *Collection Address:* ${address}
+${gpsLine}📞 *Mobile Number:* ${phone}
+🛵 *Request:* Please dispatch phlebotomist for doorstep home collection.
 ━━━━━━━━━━━━━━━━━━━━
 Please confirm available morning time slots. Thank you!`;
 

@@ -402,23 +402,132 @@ function setupBookingFormListeners() {
     btn.addEventListener('click', closeBookingModal);
   });
 
-  // Location helper button
+  // Location Locate Me helper button
+  const modalLocateBtn = document.getElementById('btnModalLocate');
+  if (modalLocateBtn) {
+    modalLocateBtn.addEventListener('click', () => {
+      const addressInput = document.getElementById('patientAddress');
+      window.locateMeHandler(addressInput, modalLocateBtn, (lat, lon) => {
+        bookingState.gpsCoordinates = { lat, lon };
+      });
+    });
+  }
+
   const fillLocBtn = document.getElementById('btnFillDefaultLocation');
   if (fillLocBtn) {
     fillLocBtn.addEventListener('click', () => {
       const addressInput = document.getElementById('patientAddress');
-      if (addressInput) {
-        addressInput.value = 'West Vinod Nagar, Gali No. 7, Near Shanti Marg, Delhi 110092';
-        addressInput.focus();
-      }
+      window.locateMeHandler(addressInput, fillLocBtn, (lat, lon) => {
+        bookingState.gpsCoordinates = { lat, lon };
+      });
     });
   }
 }
+
+// Universal Geolocation & Reverse Geocode Handler
+window.locateMeHandler = function(inputEl, btnEl, onComplete) {
+  if (!navigator.geolocation) {
+    alert('Geolocation is not supported by your browser. Please type your address manually.');
+    if (inputEl) inputEl.focus();
+    return;
+  }
+
+  const origHtml = btnEl ? btnEl.innerHTML : '';
+  if (btnEl) {
+    btnEl.classList.add('locating');
+    btnEl.disabled = true;
+    btnEl.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> <span>Locating...</span>';
+  }
+
+  navigator.geolocation.getCurrentPosition(
+    async (position) => {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+      window.lastDetectedGps = { lat, lon };
+
+      try {
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 5000);
+
+        const res = await fetch(
+          `https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}&zoom=18&addressdetails=1`,
+          { signal: controller.signal, headers: { 'Accept-Language': 'en' } }
+        );
+        clearTimeout(timeoutId);
+
+        if (res.ok) {
+          const data = await res.json();
+          const addr = data.address || {};
+          const parts = [
+            addr.building || addr.house_number || addr.commercial,
+            addr.road || addr.residential || addr.street,
+            addr.suburb || addr.neighbourhood || addr.subdistrict,
+            addr.city || addr.town || addr.state_district || 'Delhi',
+            addr.postcode
+          ].filter(Boolean);
+
+          const formatted = parts.length >= 2 ? parts.join(', ') : (data.display_name ? data.display_name.split(',').slice(0, 4).join(', ') : '');
+          if (inputEl) {
+            inputEl.value = formatted || `Near coordinates (${lat.toFixed(4)}, ${lon.toFixed(4)})`;
+            inputEl.dispatchEvent(new Event('input'));
+          }
+        } else {
+          if (inputEl) {
+            inputEl.value = `Current Location (${lat.toFixed(4)}, ${lon.toFixed(4)})`;
+          }
+        }
+      } catch (err) {
+        if (inputEl) {
+          inputEl.value = `Current Location (${lat.toFixed(4)}, ${lon.toFixed(4)})`;
+        }
+      }
+
+      if (btnEl) {
+        btnEl.classList.remove('locating');
+        btnEl.classList.add('located');
+        btnEl.disabled = false;
+        btnEl.innerHTML = '<i class="fa-solid fa-check"></i> <span>Located!</span>';
+        setTimeout(() => {
+          if (btnEl) {
+            btnEl.classList.remove('located');
+            btnEl.innerHTML = origHtml;
+          }
+        }, 3500);
+      }
+
+      if (typeof onComplete === 'function') {
+        onComplete(lat, lon);
+      }
+    },
+    (error) => {
+      if (btnEl) {
+        btnEl.classList.remove('locating');
+        btnEl.disabled = false;
+        btnEl.innerHTML = origHtml;
+      }
+      let errMsg = 'Unable to retrieve your location.';
+      if (error.code === error.PERMISSION_DENIED) {
+        errMsg = 'Location permission was denied. Please type your address manually.';
+      } else if (error.code === error.POSITION_UNAVAILABLE) {
+        errMsg = 'Location signal is unavailable. Please type your address manually.';
+      } else if (error.code === error.TIMEOUT) {
+        errMsg = 'Location request timed out. Please type your address manually.';
+      }
+      alert(errMsg);
+      if (inputEl) inputEl.focus();
+    },
+    { enableHighAccuracy: true, timeout: 9000, maximumAge: 60000 }
+  );
+};
 
 // Format the WhatsApp message string
 function buildWhatsAppBookingMessage() {
   const test = bookingState.selectedTest || { name: 'Full Body Health Checkup', price: 2500 };
   const modeText = bookingState.collectionType === 'home' ? 'Home Sample Collection 🛵' : 'Visit Diagnostic Clinic 🏥';
+
+  const gpsText = bookingState.gpsCoordinates 
+    ? `\n🗺️ *GPS Location:* https://maps.google.com/?q=${bookingState.gpsCoordinates.lat},${bookingState.gpsCoordinates.lon}`
+    : '';
 
   const message = 
 `*New Test Appointment Booking*
@@ -432,8 +541,8 @@ function buildWhatsAppBookingMessage() {
 ━━━━━━━━━━━━━━━━━━━━
 👤 *Patient Name:* ${bookingState.patientName}
 📞 *Mobile Number:* ${bookingState.patientPhone}
-🏠 *Address:* ${bookingState.patientAddress || 'West Vinod Nagar, Delhi'}
-📝 *Special Note:* ${bookingState.patientNotes}
+🏠 *Address:* ${bookingState.patientAddress || 'West Vinod Nagar, Delhi'}${gpsText}
+📝 *Special Note:* ${bookingState.patientNotes || 'None'}
 ━━━━━━━━━━━━━━━━━━━━
 Please confirm my appointment and share sample preparation guidelines. Thank you!`;
 
