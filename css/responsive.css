@@ -587,6 +587,7 @@
   .price-list-view-header {
     flex-direction: column;
     align-items: flex-start;
+    gap: 12px;
   }
 
   .price-list-view-toggle {
@@ -596,10 +597,22 @@
   .view-toggle-btn {
     flex: 1;
     justify-content: center;
+    padding: 8px 12px;
+  }
+
+  .official-price-table-wrapper {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: var(--radius-md);
   }
 
   .official-price-table {
-    min-width: 650px;
+    width: 100%;
+    min-width: 0;
+    table-layout: auto;
   }
 }
+
 

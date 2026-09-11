@@ -317,30 +317,333 @@
       color: #ffffff;
     }
 
+    .explorer-layout {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 28px;
+      margin-top: 30px;
+      margin-bottom: 60px;
+      position: relative;
+    }
+
+    .explorer-main-content {
+      min-width: 0;
+      max-width: 100%;
+      width: 100%;
+    }
+
+    .explorer-controls-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .explorer-search-wrap {
+      flex: 1 1 280px;
+      position: relative;
+    }
+
+    .explorer-filter-sort-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-mobile-filter-toggle {
+      display: none;
+      height: 46px;
+      padding: 0 16px;
+      background: #f1f5f9;
+      border: 1.5px solid var(--border-light);
+      border-radius: var(--radius-full);
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--primary-navy);
+      cursor: pointer;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      transition: var(--trans-fast);
+      position: relative;
+    }
+
+    .btn-mobile-filter-toggle:hover {
+      background: #e2e8f0;
+    }
+
+    .active-filter-indicator {
+      display: none;
+      width: 8px;
+      height: 8px;
+      background: var(--brand-red);
+      border-radius: 50%;
+    }
+
+    .btn-close-filter-drawer {
+      display: none;
+      background: #f1f5f9;
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 15px;
+      color: var(--text-dark);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      transition: var(--trans-fast);
+    }
+
+    .btn-close-filter-drawer:hover {
+      background: #e2e8f0;
+    }
+
+    .mobile-filter-apply-bar {
+      display: none;
+    }
+
+    .filter-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Table column responsiveness */
+    .col-mobile-text {
+      display: none;
+    }
+
+    .mobile-only-mrp,
+    .mobile-only-save {
+      display: none;
+    }
+
+    .mobile-price-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 2px;
+    }
+
     @media (max-width: 900px) {
       .explorer-layout {
         grid-template-columns: 1fr;
       }
-      .filter-sidebar-card {
-        display: none; /* Can be toggled or filtered via tabs */
+
+      .btn-mobile-filter-toggle {
+        display: inline-flex;
       }
+
+      .explorer-controls-bar {
+        gap: 10px;
+      }
+
+      .explorer-search-wrap {
+        width: 100%;
+        flex: 1 1 100%;
+      }
+
+      .explorer-filter-sort-row {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr auto;
+      }
+
+      .explorer-sort-select {
+        width: 100%;
+      }
+
+      /* Filter drawer for mobile */
+      .filter-sidebar-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.6);
+        backdrop-filter: blur(4px);
+        -webkit-backdrop-filter: blur(4px);
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.25s ease, visibility 0.25s ease;
+      }
+
+      .filter-sidebar-backdrop.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .filter-sidebar-card {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        max-height: 85vh;
+        background: #ffffff;
+        border-radius: 20px 20px 0 0;
+        box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.3);
+        z-index: 1001;
+        overflow-y: auto;
+        padding: 20px 20px 24px;
+        transform: translateY(105%);
+        transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        display: block !important;
+      }
+
+      .filter-sidebar-card.active {
+        transform: translateY(0);
+      }
+
+      .btn-close-filter-drawer {
+        display: inline-flex;
+      }
+
+      .filter-card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-bottom: 12px;
+        border-bottom: 1px solid var(--border-light);
+        margin-bottom: 16px;
+      }
+
+      .mobile-filter-apply-bar {
+        display: block;
+        position: sticky;
+        bottom: -24px;
+        background: #ffffff;
+        padding-top: 14px;
+        padding-bottom: 14px;
+        margin-top: 20px;
+        border-top: 1px solid var(--border-light);
+      }
+
+      .btn-mobile-apply-filters {
+        width: 100%;
+        height: 46px;
+        background: var(--primary-navy);
+        color: #ffffff;
+        border: none;
+        border-radius: var(--radius-full);
+        font-size: 14px;
+        font-weight: 700;
+        cursor: pointer;
+        transition: var(--trans-fast);
+      }
+
+      .btn-mobile-apply-filters:hover {
+        background: #0284c7;
+      }
+
       .explorer-hero-title h1 {
         font-size: 26px;
       }
+
       .explorer-hero-tag {
         display: none;
       }
+
       .individual-test-card {
         flex-direction: column;
         align-items: flex-start;
       }
+
       .test-card-left {
         max-width: 100%;
       }
+
       .test-card-right {
         width: 100%;
         justify-content: space-between;
         margin-top: 10px;
+      }
+    }
+
+    /* Table Mobile Optimizations (<= 768px) */
+    @media (max-width: 768px) {
+      .col-desktop-only,
+      .col-desktop-subtext {
+        display: none !important;
+      }
+
+      .col-desktop-text {
+        display: none !important;
+      }
+
+      .col-mobile-text {
+        display: inline !important;
+      }
+
+      .official-price-table-wrapper {
+        border-radius: var(--radius-md);
+        border: 1px solid var(--border-light);
+        box-shadow: none;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+
+      .official-price-table {
+        width: 100%;
+        min-width: 0 !important;
+        table-layout: auto;
+      }
+
+      .official-price-table th,
+      .official-price-table td {
+        padding: 10px 8px;
+        font-size: 12.5px;
+      }
+
+      .price-table-sno {
+        width: 32px !important;
+        font-size: 11.5px;
+        padding-left: 8px !important;
+        padding-right: 4px !important;
+      }
+
+      .price-table-name {
+        gap: 2px;
+      }
+
+      .price-table-name .test-title-text {
+        font-size: 13px;
+        line-height: 1.3;
+        font-weight: 700;
+      }
+
+      .price-table-subtext {
+        font-size: 11px;
+        gap: 4px;
+        color: #64748b;
+      }
+
+      .mobile-only-mrp {
+        display: inline-block;
+        font-size: 11px;
+        color: #94a3b8;
+        text-decoration: line-through;
+      }
+
+      .mobile-only-save {
+        display: inline-block;
+        font-size: 10px;
+        color: #059669;
+        font-weight: 700;
+      }
+
+      .price-table-offer {
+        font-size: 14.5px;
+        line-height: 1.2;
+      }
+
+      .price-table-book-btn {
+        padding: 6px 10px;
+        font-size: 11.5px;
+      }
+
+      .price-table-book-btn span {
+        display: inline;
       }
     }
   </style>
@@ -429,13 +732,21 @@
     </div>
   </div>
 
+  <!-- Mobile Filter Backdrop -->
+  <div class="filter-sidebar-backdrop" id="filterDrawerBackdrop"></div>
+
   <!-- Main Explorer Layout -->
   <section class="container explorer-layout">
-    <!-- Sidebar Filters (Desktop Panel 2) -->
-    <aside class="filter-sidebar-card">
+    <!-- Sidebar Filters (Desktop Panel 2 & Mobile Drawer) -->
+    <aside class="filter-sidebar-card" id="filterSidebarCard">
       <div class="filter-card-header">
         <h3>Filters</h3>
-        <button type="button" class="btn-clear-filters" id="btnClearFilters">Clear All</button>
+        <div class="filter-header-actions">
+          <button type="button" class="btn-clear-filters" id="btnClearFilters">Clear All</button>
+          <button type="button" class="btn-close-filter-drawer" id="btnCloseFilterDrawer" aria-label="Close filters">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
       </div>
 
       <!-- Health Concern -->
@@ -507,6 +818,12 @@
           </label>
         </div>
       </div>
+
+      <div class="mobile-filter-apply-bar">
+        <button type="button" class="btn-mobile-apply-filters" id="btnApplyMobileFilters">
+          Apply Filters (<span id="mobileFilteredCount">48</span> tests)
+        </button>
+      </div>
     </aside>
 
     <!-- Main Tests Content -->
@@ -517,11 +834,18 @@
           <i class="fa-solid fa-magnifying-glass"></i>
           <input type="text" id="explorerSearchInput" class="explorer-search-input" placeholder="Search tests or packages (e.g. CBC, Lipid, Thyroid, CRP, Vitamin D)...">
         </div>
-        <select id="explorerSortSelect" class="explorer-sort-select">
-          <option value="popular">Sort by: Most Popular</option>
-          <option value="price-asc">Price: Low to High</option>
-          <option value="price-desc">Price: High to Low</option>
-        </select>
+        <div class="explorer-filter-sort-row">
+          <select id="explorerSortSelect" class="explorer-sort-select">
+            <option value="popular">Sort: Popular</option>
+            <option value="price-asc">Price: Low to High</option>
+            <option value="price-desc">Price: High to Low</option>
+          </select>
+          <button type="button" class="btn-mobile-filter-toggle" id="btnMobileFilterToggle" aria-label="Open Filters">
+            <i class="fa-solid fa-sliders"></i>
+            <span>Filters</span>
+            <span class="active-filter-indicator" id="filterActiveDot"></span>
+          </button>
+        </div>
       </div>
 
       <!-- Type Tabs -->
@@ -560,14 +884,17 @@
           <table class="official-price-table">
             <thead>
               <tr>
-                <th style="width: 50px; text-align: center;">S.No.</th>
-                <th>Test / Investigation Name</th>
-                <th>Sample / Fasting</th>
-                <th>Turnaround</th>
-                <th style="text-align: right;">MRP (₹)</th>
-                <th style="text-align: right;">Offer Price (₹)</th>
-                <th style="text-align: center;">You Save</th>
-                <th style="text-align: right;">Action</th>
+                <th class="col-sno" style="width: 44px; text-align: center;">S.No.</th>
+                <th class="col-name">Test / Investigation Name</th>
+                <th class="col-desktop-only">Sample / Fasting</th>
+                <th class="col-desktop-only">Turnaround</th>
+                <th class="col-desktop-only" style="text-align: right;">MRP (₹)</th>
+                <th class="col-price" style="text-align: right;">
+                  <span class="col-desktop-text">Offer Price (₹)</span>
+                  <span class="col-mobile-text">Price</span>
+                </th>
+                <th class="col-desktop-only" style="text-align: center;">You Save</th>
+                <th class="col-action" style="text-align: right;">Action</th>
               </tr>
             </thead>
             <tbody id="explorerPriceTableBody">
@@ -1004,6 +1331,10 @@
         document.getElementById('countPackages').textContent = packages.length;
         document.getElementById('countTests').textContent = tests.length;
         document.getElementById('countAll').textContent = packages.length + tests.length;
+        const mobileFilteredCount = document.getElementById('mobileFilteredCount');
+        if (mobileFilteredCount) {
+          mobileFilteredCount.textContent = packages.length + tests.length;
+        }
 
         // Render Packages
         const packagesSection = document.getElementById('explorerPackagesSection');
@@ -1099,35 +1430,40 @@
 
               return `
                 <tr>
-                  <td class="price-table-sno">${sno}</td>
-                  <td>
+                  <td class="price-table-sno col-sno">${sno}</td>
+                  <td class="col-name">
                     <div class="price-table-name">
-                      <span>${test.name}</span>
+                      <span class="test-title-text">${test.name}</span>
                       <div class="price-table-subtext">
                         <span><i class="fa-solid fa-vial"></i> ${test.sampleType}</span>
                         <span>•</span>
-                        <span><i class="fa-solid fa-bowl-food"></i> ${test.fastingRequired}</span>
+                        <span><i class="fa-solid fa-clock"></i> ${test.reportTime}</span>
+                        <span class="col-desktop-subtext">• ${test.fastingRequired}</span>
                       </div>
                     </div>
                   </td>
-                  <td>
+                  <td class="col-desktop-only">
                     <span style="font-size: 12px; color: #475569;">${test.fastingRequired}</span>
                   </td>
-                  <td>
+                  <td class="col-desktop-only">
                     <span style="font-size: 12.5px; color: #0284c7; font-weight: 600;"><i class="fa-solid fa-clock"></i> ${test.reportTime}</span>
                   </td>
-                  <td style="text-align: right;">
+                  <td class="col-desktop-only" style="text-align: right;">
                     <span class="price-table-mrp">₹${test.originalPrice.toLocaleString('en-IN')}</span>
                   </td>
-                  <td style="text-align: right;">
-                    <span class="price-table-offer">₹${test.price.toLocaleString('en-IN')}</span>
+                  <td class="col-price" style="text-align: right;">
+                    <div class="mobile-price-stack">
+                      <span class="price-table-offer">₹${test.price.toLocaleString('en-IN')}</span>
+                      ${discount > 0 ? `<span class="mobile-only-mrp">₹${test.originalPrice.toLocaleString('en-IN')}</span>` : ''}
+                      ${discount > 0 ? `<span class="mobile-only-save">Save ₹${discount}</span>` : ''}
+                    </div>
                   </td>
-                  <td style="text-align: center;">
+                  <td class="col-desktop-only" style="text-align: center;">
                     ${discount > 0 ? `<span class="price-table-save">Save ₹${discount.toLocaleString('en-IN')} (${savePercent}%)</span>` : `<span style="color:#94a3b8; font-size:12px;">Standard Rate</span>`}
                   </td>
-                  <td class="price-table-actions">
+                  <td class="price-table-actions col-action">
                     <button type="button" class="price-table-book-btn" data-book-test="${test.id}">
-                      <i class="fa-solid fa-calendar-plus"></i> Book
+                      <i class="fa-solid fa-calendar-plus"></i> <span>Book</span>
                     </button>
                   </td>
                 </tr>
@@ -1137,12 +1473,45 @@
         }
       }
 
+      // Mobile filter drawer logic
+      const filterDrawer = document.getElementById('filterSidebarCard');
+      const filterBackdrop = document.getElementById('filterDrawerBackdrop');
+      const btnMobileFilterToggle = document.getElementById('btnMobileFilterToggle');
+      const btnCloseFilterDrawer = document.getElementById('btnCloseFilterDrawer');
+      const btnApplyMobileFilters = document.getElementById('btnApplyMobileFilters');
+      const filterActiveDot = document.getElementById('filterActiveDot');
+
+      function openFilterDrawer() {
+        if (filterDrawer) filterDrawer.classList.add('active');
+        if (filterBackdrop) filterBackdrop.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeFilterDrawer() {
+        if (filterDrawer) filterDrawer.classList.remove('active');
+        if (filterBackdrop) filterBackdrop.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      if (btnMobileFilterToggle) btnMobileFilterToggle.addEventListener('click', openFilterDrawer);
+      if (btnCloseFilterDrawer) btnCloseFilterDrawer.addEventListener('click', closeFilterDrawer);
+      if (filterBackdrop) filterBackdrop.addEventListener('click', closeFilterDrawer);
+      if (btnApplyMobileFilters) btnApplyMobileFilters.addEventListener('click', closeFilterDrawer);
+
       // Event listeners
       searchInput.addEventListener('input', updateExplorer);
       sortSelect.addEventListener('change', updateExplorer);
 
       document.querySelectorAll('.filter-sidebar-card input[type="checkbox"]').forEach(cb => {
-        cb.addEventListener('change', updateExplorer);
+        cb.addEventListener('change', () => {
+          // Check if any filter is unchecked to show indicator dot
+          const totalCheckboxes = document.querySelectorAll('.filter-sidebar-card input[type="checkbox"]').length;
+          const checkedCount = document.querySelectorAll('.filter-sidebar-card input[type="checkbox"]:checked').length;
+          if (filterActiveDot) {
+            filterActiveDot.style.display = checkedCount < totalCheckboxes ? 'inline-block' : 'none';
+          }
+          updateExplorer();
+        });
       });
 
       typeTabs.forEach(btn => {
@@ -1160,6 +1529,7 @@
         clearBtn.addEventListener('click', () => {
           searchInput.value = '';
           document.querySelectorAll('.filter-sidebar-card input[type="checkbox"]').forEach(cb => cb.checked = true);
+          if (filterActiveDot) filterActiveDot.style.display = 'none';
           updateExplorer();
         });
       }
